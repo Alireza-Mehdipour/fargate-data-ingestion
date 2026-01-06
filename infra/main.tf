@@ -69,13 +69,16 @@ module "ecr" {
 }
 
 ###############################################
-# ECS Module
+# ECS Module (updated to use versioned tags)
 ###############################################
 module "ecs" {
-  source        = "./modules/ecs"
-  cluster_name  = "fargate-cluster"
-  task_family   = "fargate-task"
-  image_url     = "${module.ecr.repository_url}:latest"
+  source       = "./modules/ecs"
+  cluster_name = "fargate-cluster"
+  task_family  = "fargate-task"
+
+  # Pass image URL and tag separately
+  image_url = module.ecr.repository_url
+  image_tag = var.image_tag
 }
 
 ###############################################

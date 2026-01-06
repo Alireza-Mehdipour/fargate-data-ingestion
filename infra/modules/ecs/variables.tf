@@ -7,5 +7,11 @@ variable "task_family" {
 }
 
 variable "image_url" {
-  type = string
+  description = "Base ECR image URL without tag"
+  type        = string
+}
+
+variable "image_tag" {
+  description = "Image version tag"
+  type        = string
 }

@@ -15,3 +15,8 @@ variable "bucket_name" {
   type        = string
   default     = "fargate-ingestion-bucket-dev"
 }
+
+variable "image_tag" {
+  description = "Version tag for the ECR image"
+  type        = string
+}
