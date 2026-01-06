@@ -23,3 +23,8 @@ resource "aws_s3_bucket" "ingestion" {
     ManagedBy   = "terraform"
   }
 }
+
+module "ecr" {
+  source          = "./modules/ecr"
+  repository_name = "fargate-data-api"
+}
