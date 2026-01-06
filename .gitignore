@@ -13,6 +13,9 @@ __pycache__/
 *.tfstate
 *.tfstate.backup
 
+# Terraform plan files
+*.tfplan
+
 # OS files
 .DS_Store
 Thumbs.db
