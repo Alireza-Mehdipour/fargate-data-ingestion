@@ -24,7 +24,9 @@ Key features include:
 
 ## 📸 Application Screenshot
 
-![FastAPI running on AWS Fargate](screenshot.png)
+
+<img width="1396" height="757" alt="screenshot png" src="https://github.com/user-attachments/assets/734c4341-5bcd-4f7d-ae4d-892a709e0928" />
+
 
 Live URL: [`http://fargate-alb-602558180.ap-southeast-2.elb.amazonaws.com`](http://fargate-alb-602558180.ap-southeast-2.elb.amazonaws.com)
 
