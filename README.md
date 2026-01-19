@@ -1,11 +1,11 @@
-# 🚀 Fargate Data Ingestion — FastAPI on AWS ECS/Fargate (Terraform + Docker)
+# Fargate Data Ingestion — FastAPI on AWS ECS/Fargate (Terraform + Docker)
 
 A production‑grade FastAPI application deployed on **AWS Fargate** using **Terraform**, **ECS**, **ECR**, **ALB**, and **Docker**.  
 This project demonstrates real DevOps engineering skills: containerization, IaC, cloud architecture, CI/CD‑ready structure, and secure, scalable deployment patterns.
 
 ---
 
-## 🌐 Project Overview
+## Project Overview
 
 This project showcases a fully containerized FastAPI service running on AWS Fargate behind an Application Load Balancer.  
 It is designed as a **portfolio‑grade example** of modern cloud deployment using Infrastructure as Code.
@@ -32,16 +32,16 @@ Live URL: [`http://fargate-alb-602558180.ap-southeast-2.elb.amazonaws.com`](http
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 **AWS Services Used:**
 
-- **ECS Fargate** — serverless container compute  
-- **ECR** — container registry  
-- **ALB** — traffic routing and health checks  
-- **VPC + Subnets** — networking foundation  
-- **CloudWatch Logs** — application logging  
-- **IAM** — secure role‑based access  
+- **ECS Fargate** --> serverless container compute  
+- **ECR** --> container registry  
+- **ALB** --> traffic routing and health checks  
+- **VPC + Subnets** --> networking foundation  
+- **CloudWatch Logs** --> application logging  
+- **IAM** --> secure role‑based access  
 
 **High‑Level Flow:**
 
@@ -53,7 +53,7 @@ Live URL: [`http://fargate-alb-602558180.ap-southeast-2.elb.amazonaws.com`](http
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 fargate-data-ingestion/
@@ -88,7 +88,7 @@ fargate-data-ingestion/
 
 ---
 
-## 🐳 Local Development
+## Local Development
 
 Build and run the FastAPI app locally:
 
@@ -105,7 +105,7 @@ http://localhost:8000
 
 ---
 
-## ☁️ Deployment Workflow (Terraform + ECR)
+## Deployment Workflow (Terraform + ECR)
 
 ### 1. Build the Docker image
 ```bash
@@ -145,7 +145,7 @@ terraform apply
 
 ---
 
-## 🧩 Terraform Example (Task Definition Snippet)
+## Terraform Example (Task Definition Snippet)
 
 ```hcl
 container_definitions = jsonencode([
