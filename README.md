@@ -1,5 +1,7 @@
 # Fargate Data Ingestion
 
+[![CI](https://github.com/Alireza-Mehdipour/fargate-data-ingestion/actions/workflows/ci.yml/badge.svg)](https://github.com/Alireza-Mehdipour/fargate-data-ingestion/actions/workflows/ci.yml)
+
 **FastAPI on AWS ECS/Fargate — Terraform, Docker, ALB**
 
 A containerised FastAPI service deployed on **AWS Fargate** using **Terraform**, **ECS**, **ECR**, **ALB**, and **Docker**.
@@ -15,7 +17,7 @@ Key features include:
 - IAM task execution role with scoped permissions
 - Application Load Balancer with health checks and routing  
 - Private ECR repository for image storage  
-- Modular Terraform structure for clean, reusable IaC  
+- Modular Terraform structure (alb, ecr, ecs, service)  
 - CloudWatch logging for observability  
 - Provider versions pinned via .terraform.lock.hcl
 
