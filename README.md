@@ -66,7 +66,7 @@ fargate-data-ingestion/
 │   └── Dockerfile            # Docker image definition
 │
 ├── infra/                    # Terraform infrastructure as code
-│   ├── modules/              # Reusable modules (networking, ECS, ALB, ECR)
+│   ├── modules/              # Reusable modules (ALB, ECS, ECR, Service)
 │   ├── main.tf               # Root configuration
 │   ├── variables.tf          # Input variables
 │   ├── outputs.tf            # Outputs (ALB URL, ECR repository)
@@ -172,8 +172,7 @@ container_definitions = jsonencode([
 
 This project was built to demonstrate:
 
-- Deploying containerised workloads with Infrastructure as Code 
-- Ability to design and deploy containerized applications  
+- Deploying containerised workloads with Infrastructure as Code  
 - Proficiency with Terraform and AWS services  
 - Clean, modular infrastructure with reusable Terraform modules 
 - Strong documentation and engineering communication  
