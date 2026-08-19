@@ -43,7 +43,7 @@ resource "aws_ecs_task_definition" "this" {
 
   container_definitions = jsonencode([
     {
-      name  = "app"
+      name = "app"
 
       # Build full image URL using repo + tag
       image = "${var.image_url}:${var.image_tag}"

@@ -6,10 +6,10 @@
 ###############################################
 resource "aws_lb" "this" {
   name               = var.lb_name
-  internal           = false                     # Internet-facing ALB
+  internal           = false # Internet-facing ALB
   load_balancer_type = "application"
-  security_groups    = [var.security_group_id]   # ALB security group
-  subnets            = var.subnet_ids            # Public subnets
+  security_groups    = [var.security_group_id] # ALB security group
+  subnets            = var.subnet_ids          # Public subnets
 }
 
 #########################################################
@@ -20,13 +20,13 @@ resource "aws_lb" "this" {
 #########################################################
 resource "aws_lb_target_group" "this" {
   name        = "${var.lb_name}-tg"
-  port        = 8000                              # FastAPI container port
+  port        = 8000 # FastAPI container port
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
-  target_type = "ip"                              # Required for Fargate
+  target_type = "ip" # Required for Fargate
 
   health_check {
-    path                = "/docs"                 # FastAPI health endpoint
+    path                = "/docs" # FastAPI health endpoint
     protocol            = "HTTP"
     matcher             = "200"
     interval            = 30
