@@ -1,24 +1,23 @@
-# Fargate Data Ingestion — FastAPI on AWS ECS/Fargate (Terraform + Docker)
+# Fargate Data Ingestion
 
-A production‑grade FastAPI application deployed on **AWS Fargate** using **Terraform**, **ECS**, **ECR**, **ALB**, and **Docker**.  
-This project demonstrates real DevOps engineering skills: containerization, IaC, cloud architecture, CI/CD‑ready structure, and secure, scalable deployment patterns.
+**FastAPI on AWS ECS/Fargate — Terraform, Docker, ALB**
+
+A containerised FastAPI service deployed on **AWS Fargate** using **Terraform**, **ECS**, **ECR**, **ALB**, and **Docker**.
+Built to demonstrate containerization, Infrastructure as Code, cloud architecture, and secure, scalable deployment patterns.
 
 ---
 
 ## Project Overview
 
-This project showcases a fully containerized FastAPI service running on AWS Fargate behind an Application Load Balancer.  
-It is designed as a **portfolio‑grade example** of modern cloud deployment using Infrastructure as Code.
-
 Key features include:
 
 - FastAPI application packaged in a lightweight Docker image  
-- AWS ECS Fargate service with autoscaling‑ready configuration  
+- IAM task execution role with scoped permissions
 - Application Load Balancer with health checks and routing  
 - Private ECR repository for image storage  
 - Modular Terraform structure for clean, reusable IaC  
 - CloudWatch logging for observability  
-- Public endpoint for testing and demonstration  
+- Provider versions pinned via .terraform.lock.hcl
 
 ---
 
@@ -54,39 +53,25 @@ Live URL: [`http://fargate-alb-602558180.ap-southeast-2.elb.amazonaws.com`](http
 ---
 
 ## Repository Structure
-
 ```
 fargate-data-ingestion/
-├── app/                         # FastAPI application source code
-│   ├── main.py                  # Entry point for the API
-│   └── requirements.txt         # Python dependencies
+├── app/                      # FastAPI application and container definition
+│   ├── main.py               # API entry point
+│   ├── index.html            # Served landing page
+│   ├── requirements.txt      # Python dependencies
+│   └── Dockerfile            # Docker image definition
 │
-├── docker/
-│   └── Dockerfile               # Docker image definition for FastAPI
+├── infra/                    # Terraform infrastructure as code
+│   ├── modules/              # Reusable modules (networking, ECS, ALB, ECR)
+│   ├── main.tf               # Root configuration
+│   ├── variables.tf          # Input variables
+│   ├── outputs.tf            # Outputs (ALB URL, ECR repository)
+│   └── .terraform.lock.hcl   # Provider version lock file
 │
-├── terraform/
-│   ├── modules/                 # Reusable Terraform modules (VPC, ECS, ALB, ECR)
-│   │   ├── ecs/                 # ECS cluster, task definition, service
-│   │   ├── alb/                 # Application Load Balancer + listeners
-│   │   ├── ecr/                 # ECR repository module
-│   │   └── networking/          # VPC, subnets, routing
-│   │
-│   ├── environments/
-│   │   └── dev/                 # Environment-specific variables (dev)
-│   │       ├── main.tfvars
-│   │       └── backend.tf
-│   │
-│   ├── main.tf                  # Root Terraform configuration
-│   ├── variables.tf             # Input variables
-│   ├── outputs.tf               # Output values (ALB URL, ECR repo, etc.)
-│   └── providers.tf             # AWS provider configuration
-│
-├── .gitignore                   # Git ignore rules
-├── README.md                    # Project documentation
-└── LICENSE                      # MIT License
+├── .gitignore
+├── LICENSE                   # MIT License
+└── README.md
 ```
-
----
 
 ## Local Development
 
