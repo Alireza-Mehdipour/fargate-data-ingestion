@@ -27,7 +27,8 @@ Key features include:
 <img width="1396" height="757" alt="screenshot png" src="https://github.com/user-attachments/assets/734c4341-5bcd-4f7d-ae4d-892a709e0928" />
 
 
-Live URL: [`http://fargate-alb-602558180.ap-southeast-2.elb.amazonaws.com`](http://fargate-alb-602558180.ap-southeast-2.elb.amazonaws.com)
+The screenshot above shows the running application. The environment has been
+destroyed to avoid ongoing cost, and can be recreated with `terraform apply`.
 
 ---
 
@@ -53,6 +54,7 @@ Live URL: [`http://fargate-alb-602558180.ap-southeast-2.elb.amazonaws.com`](http
 ---
 
 ## Repository Structure
+
 ```
 fargate-data-ingestion/
 ├── app/                      # FastAPI application and container definition
@@ -73,12 +75,14 @@ fargate-data-ingestion/
 └── README.md
 ```
 
+---
+
 ## Local Development
 
 Build and run the FastAPI app locally:
 
 ```bash
-docker build -t fargate-data-ingestion:v1.0.3 .
+docker build -t fargate-data-ingestion:v1.0.3 ./app
 docker run -p 8000:8000 fargate-data-ingestion:v1.0.3
 ```
 
@@ -94,30 +98,31 @@ http://localhost:8000
 
 ### 1. Build the Docker image
 ```bash
-docker build -t fargate-data-ingestion:v1.0.3 .
+docker build -t fargate-data-ingestion:v1.0.3 ./app
 ```
 
 ### 2. Authenticate Docker to AWS ECR
 ```bash
 aws ecr get-login-password --region ap-southeast-2 \
   | docker login --username AWS \
-  --password-stdin 014208336048.dkr.ecr.ap-southeast-2.amazonaws.com
+  --password-stdin <ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com
 ```
 
 ### 3. Tag the image for ECR
 ```bash
 docker tag fargate-data-ingestion:v1.0.3 \
-  014208336048.dkr.ecr.ap-southeast-2.amazonaws.com/fargate-data-ingestion:v1.0.3
+  <ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/fargate-data-ingestion:v1.0.3
 ```
 
 ### 4. Push the image to ECR
 ```bash
 docker push \
-  014208336048.dkr.ecr.ap-southeast-2.amazonaws.com/fargate-data-ingestion:v1.0.3
+  <ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/fargate-data-ingestion:v1.0.3
 ```
 
 ### 5. Deploy infrastructure with Terraform
 ```bash
+cd infra
 terraform init
 terraform plan
 terraform apply
@@ -125,7 +130,7 @@ terraform apply
 
 ### 6. ECS Fargate automatically pulls:
 ```
-014208336048.dkr.ecr.ap-southeast-2.amazonaws.com/fargate-data-ingestion:v1.0.3
+<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/fargate-data-ingestion:v1.0.3
 ```
 
 ---
@@ -136,7 +141,7 @@ terraform apply
 container_definitions = jsonencode([
   {
     name      = "fastapi-app"
-    image     = "014208336048.dkr.ecr.ap-southeast-2.amazonaws.com/fargate-data-ingestion:v1.0.3"
+    image     = "<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/fargate-data-ingestion:v1.0.3"
     essential = true
 
     portMappings = [
@@ -165,10 +170,10 @@ container_definitions = jsonencode([
 
 This project was built to demonstrate:
 
-- Real‑world DevOps and Cloud Engineering skills  
+- Deploying containerised workloads with Infrastructure as Code 
 - Ability to design and deploy containerized applications  
 - Proficiency with Terraform and AWS services  
-- Clean, modular, production‑ready infrastructure  
+- Clean, modular infrastructure with reusable Terraform modules 
 - Strong documentation and engineering communication  
 
 ---
@@ -177,7 +182,7 @@ This project was built to demonstrate:
 
 **Alireza Mehdipour**  
 Cloud & DevOps Engineer  
-LinkedIn: [`linkedin.com/in/alireza-mehdipour-8868686229`](https://www.linkedin.com/in/alireza-mehdipour-8868686229)
+LinkedIn: [`linkedin.com/in/ali-mehdipour-886686229`](https://www.linkedin.com/in/ali-mehdipour-886686229/)
 
 ---
 
